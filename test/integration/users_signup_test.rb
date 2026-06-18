@@ -23,6 +23,10 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password_confirmation: "password" } }
     end
     follow_redirect!
+    assert_select 'div.alert-success'
+    assert_select 'div.alert'
+    assert_select 'div.alert-success', 'Welcome to the Sample App!'
     assert_template 'users/show'
+    assert_not flash.empty?
   end
 end
