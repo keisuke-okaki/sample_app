@@ -62,9 +62,9 @@ class UserTest < ActiveSupport::TestCase
     email_downcase = @user.email.downcase
     @user.email = @user.email.upcase
     @user.save
-    assert_equal email_downcase, @user.reload.email 
+    assert_equal email_downcase, @user.reload.email
   end
   test "authenticated? should return false for a user with nil digest" do
-    assert_not @user.authenticated?('')
+    assert_not @user.authenticated?(:remember, '')
   end
 end
